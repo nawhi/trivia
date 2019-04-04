@@ -24,11 +24,17 @@ public class GoldenMaster {
 
         PrintStream originalOut = System.out;
 
-        System.setOut(new PrintStream(new BufferedOutputStream(new FileOutputStream("./output.txt")), true));
-        Random rand = new Random(TEST_SEED);
-        GameRunner.run(rand);
+        try (FileOutputStream outputStream = new FileOutputStream("./output.txt")){
+            System.setOut(new PrintStream(new BufferedOutputStream(outputStream), true));
 
-        System.setOut(originalOut);
+            Random rand = new Random(TEST_SEED);
+            GameRunner.run(rand);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            System.setOut(originalOut);
+        }
 
         List<String> goldenMaster = Files.readAllLines(goldenMasterPath);
         List<String> output = Files.readAllLines(outputPath);
