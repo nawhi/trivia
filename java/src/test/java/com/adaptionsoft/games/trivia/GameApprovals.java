@@ -14,6 +14,18 @@ public class GameApprovals {
         Approvals.verify(output);
     }
 
+    @Test
+    public void add_two_players() {
+        String output = catchSystemOutFor(() -> {
+            Game game = new Game();
+            game.add("Test1");
+            game.add("Test2");
+        });
+        Approvals.verify(output);
+    }
+
+
+
     private static String catchSystemOutFor(Runnable action) {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         PrintStream outputStream = new PrintStream(baos);
