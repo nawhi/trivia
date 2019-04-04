@@ -24,7 +24,32 @@ public class GameApprovals {
         Approvals.verify(output);
     }
 
+    @Test
+    public void a_player_rolls_a_one() {
+        String output = catchSystemOutFor(() -> {
+            Game game = new Game();
 
+            game.add("Test");
+
+            game.roll(1);
+        });
+
+        Approvals.verify(output);
+    }
+
+    @Test
+    public void a_player_rolls_a_six_followed_by_a_six() {
+        String output = catchSystemOutFor(() -> {
+            Game game = new Game();
+
+            game.add("Test");
+
+            game.roll(6);
+            game.roll(6);
+        });
+
+        Approvals.verify(output);
+    }
 
     private static String catchSystemOutFor(Runnable action) {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
