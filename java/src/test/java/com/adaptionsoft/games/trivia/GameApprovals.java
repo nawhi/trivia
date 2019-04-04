@@ -65,6 +65,34 @@ public class GameApprovals {
         Approvals.verify(output);
     }
 
+    @Test
+    public void a_player_in_the_penalty_box_rolls_a_one() {
+        String output = catchSystemOutFor(() -> {
+            Game game = aGameWithPlayerInPenaltyBox();
+            game.roll(1);
+        });
+
+        Approvals.verify(output);
+    }
+
+    @Test
+    public void a_player_in_the_penalty_box_rolls_a_two() {
+        String output = catchSystemOutFor(() -> {
+            Game game = aGameWithPlayerInPenaltyBox();
+            game.roll(2);
+        });
+
+        Approvals.verify(output);
+    }
+
+    private Game aGameWithPlayerInPenaltyBox() {
+        Game game = new Game();
+        game.add("Test");
+        game.roll(4);
+        game.wrongAnswer();
+        return game;
+    }
+
     private static String catchSystemOutFor(Runnable action) {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         PrintStream outputStream = new PrintStream(baos);
