@@ -1,6 +1,7 @@
 package com.adaptionsoft.games.trivia;
 
 import com.adaptionsoft.games.trivia.runner.GameRunner;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.io.*;
@@ -21,9 +22,13 @@ public class GoldenMaster {
         Path goldenMasterPath = Paths.get("./goldenMaster.txt");
         Path outputPath = Paths.get("./output.txt");
 
+        PrintStream originalOut = System.out;
+
         System.setOut(new PrintStream(new BufferedOutputStream(new FileOutputStream("./output.txt")), true));
         Random rand = new Random(TEST_SEED);
         GameRunner.run(rand);
+
+        System.setOut(originalOut);
 
         List<String> goldenMaster = Files.readAllLines(goldenMasterPath);
         List<String> output = Files.readAllLines(outputPath);
