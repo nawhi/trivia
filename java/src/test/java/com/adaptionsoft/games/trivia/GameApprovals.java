@@ -38,14 +38,14 @@ public class GameApprovals {
     }
 
     @Test
-    public void a_player_rolls_a_six_followed_by_a_six() {
+    public void a_player_rolls_a_six_and_answers_correctly() {
         String output = catchSystemOutFor(() -> {
             Game game = new Game();
 
             game.add("Test");
 
             game.roll(6);
-            game.roll(6);
+            game.wasCorrectlyAnswered();
         });
 
         Approvals.verify(output);
