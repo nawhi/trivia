@@ -1,0 +1,12 @@
+Test was added
+They are player number 1
+Test is the current player
+They have rolled a 6
+Test's new location is 6
+The category is Sports
+Sports Question 0
+Test is the current player
+They have rolled a 6
+Test's new location is 0
+The category is Pop
+Pop Question 0
