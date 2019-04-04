@@ -51,6 +51,20 @@ public class GameApprovals {
         Approvals.verify(output);
     }
 
+    @Test
+    public void a_player_rolls_a_four_and_answers_incorrectly() {
+        String output = catchSystemOutFor(() -> {
+            Game game = new Game();
+
+            game.add("Test");
+
+            game.roll(4);
+            game.wrongAnswer();
+        });
+
+        Approvals.verify(output);
+    }
+
     private static String catchSystemOutFor(Runnable action) {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         PrintStream outputStream = new PrintStream(baos);
