@@ -27,12 +27,12 @@ public class CategorySelectorShould {
     })
     public void selects_category(int place, String expectedCategory) {
         CategorySelector categorySelector = new CategorySelector();
-        assertEquals(expectedCategory, categorySelector.invoke(place));
+        assertEquals(expectedCategory, categorySelector.categoryFor(place));
     }
 
     @Test(expected=IllegalArgumentException.class)
     public void fails_if_place_greater_than_11() {
-        new CategorySelector().invoke(12);
+        new CategorySelector().categoryFor(12);
     }
 
 }

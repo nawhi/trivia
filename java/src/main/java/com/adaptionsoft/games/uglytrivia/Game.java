@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Game {
-    ArrayList players = new ArrayList();
+	private final CategorySelector categorySelector = new CategorySelector();
+	ArrayList players = new ArrayList();
     int[] places = new int[6];
     int[] purses  = new int[6];
     boolean[] inPenaltyBox  = new boolean[6];
@@ -16,8 +17,8 @@ public class Game {
     
     int currentPlayer = 0;
     boolean isGettingOutOfPenaltyBox;
-    
-    public  Game(){
+
+	public  Game(){
     	for (int i = 0; i < 50; i++) {
 			popQuestions.addLast("Pop Question " + i);
 			scienceQuestions.addLast(("Science Question " + i));
@@ -56,7 +57,7 @@ public class Game {
 				System.out.println(players.get(currentPlayer) 
 						+ "'s new location is " 
 						+ places[currentPlayer]);
-				System.out.println("The category is " + currentCategory());
+				System.out.println("The category is " + categorySelector.categoryFor(places[currentPlayer]));
 				askQuestion();
 			} else {
 				System.out.println(players.get(currentPlayer) + " is not getting out of the penalty box");
@@ -71,27 +72,23 @@ public class Game {
 			System.out.println(players.get(currentPlayer) 
 					+ "'s new location is " 
 					+ places[currentPlayer]);
-			System.out.println("The category is " + currentCategory());
+			System.out.println("The category is " + categorySelector.categoryFor(places[currentPlayer]));
 			askQuestion();
 		}
 		
 	}
 
 	private void askQuestion() {
-		if (currentCategory() == "Pop")
+		if (categorySelector.categoryFor(places[currentPlayer]) == "Pop")
 			System.out.println(popQuestions.removeFirst());
-		if (currentCategory() == "Science")
+		if (categorySelector.categoryFor(places[currentPlayer]) == "Science")
 			System.out.println(scienceQuestions.removeFirst());
-		if (currentCategory() == "Sports")
+		if (categorySelector.categoryFor(places[currentPlayer]) == "Sports")
 			System.out.println(sportsQuestions.removeFirst());
-		if (currentCategory() == "Rock")
-			System.out.println(rockQuestions.removeFirst());		
+		if (categorySelector.categoryFor(places[currentPlayer]) == "Rock")
+			System.out.println(rockQuestions.removeFirst());
 	}
-	
-	
-	private String currentCategory() {
-		return new CategorySelector().invoke(places[currentPlayer]);
-	}
+
 
 	public boolean wasCorrectlyAnswered() {
 		if (inPenaltyBox[currentPlayer]){

@@ -1,7 +1,7 @@
 package com.adaptionsoft.games.uglytrivia;
 
 public class CategorySelector {
-    public String invoke(int place) {
+    public String categoryFor(int place) {
         if (place > 11)
             throw new IllegalArgumentException("place should be less than 12");
 
