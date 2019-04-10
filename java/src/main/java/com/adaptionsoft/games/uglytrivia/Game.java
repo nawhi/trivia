@@ -79,14 +79,11 @@ public class Game {
 	}
 
 	private void askQuestion() {
-		if (categorySelector.categoryFor(places[currentPlayer]) == "Pop")
-			System.out.println(popQuestions.removeFirst());
-		if (categorySelector.categoryFor(places[currentPlayer]) == "Science")
-			System.out.println(scienceQuestions.removeFirst());
-		if (categorySelector.categoryFor(places[currentPlayer]) == "Sports")
-			System.out.println(sportsQuestions.removeFirst());
-		if (categorySelector.categoryFor(places[currentPlayer]) == "Rock")
-			System.out.println(rockQuestions.removeFirst());
+		System.out.println(selectQuestion(popQuestions, scienceQuestions, sportsQuestions, rockQuestions, categorySelector, places[currentPlayer]));
+	}
+
+	private String selectQuestion(LinkedList popQuestions, LinkedList scienceQuestions, LinkedList sportsQuestions, LinkedList rockQuestions, CategorySelector categorySelector, int place) {
+		return new QuestionSelector(popQuestions, scienceQuestions, sportsQuestions, rockQuestions, categorySelector, place).invoke();
 	}
 
 
