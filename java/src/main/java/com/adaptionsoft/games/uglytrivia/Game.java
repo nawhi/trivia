@@ -79,14 +79,7 @@ public class Game {
 	}
 
 	private void askQuestion() {
-		if (categorySelector.categoryFor(places[currentPlayer]) == "Pop")
-			System.out.println(popQuestions.removeFirst());
-		if (categorySelector.categoryFor(places[currentPlayer]) == "Science")
-			System.out.println(scienceQuestions.removeFirst());
-		if (categorySelector.categoryFor(places[currentPlayer]) == "Sports")
-			System.out.println(sportsQuestions.removeFirst());
-		if (categorySelector.categoryFor(places[currentPlayer]) == "Rock")
-			System.out.println(rockQuestions.removeFirst());
+		new QuestionSelector(this).invoke(categorySelector.categoryFor(places[currentPlayer]));
 	}
 
 
