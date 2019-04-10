@@ -79,15 +79,13 @@ public class Game {
 	}
 
 	private void askQuestion() {
-		System.out.println(selectQuestion(popQuestions, scienceQuestions, sportsQuestions, rockQuestions, categorySelector, places[currentPlayer]));
+		QuestionSelector questionSelector = new QuestionSelector(popQuestions, scienceQuestions, sportsQuestions, rockQuestions);
+		String category = categorySelector.categoryFor(places[currentPlayer]);
+		System.out.println(questionSelector.questionFor(category));
 	}
 
-	private String selectQuestion(LinkedList popQuestions, LinkedList scienceQuestions, LinkedList sportsQuestions, LinkedList rockQuestions, CategorySelector categorySelector, int place) {
-		return new QuestionSelector(popQuestions, scienceQuestions, sportsQuestions, rockQuestions).invoke(categorySelector.categoryFor(place));
-	}
 
-
-	public boolean wasCorrectlyAnswered() {
+    public boolean wasCorrectlyAnswered() {
 		if (inPenaltyBox[currentPlayer]){
 			if (isGettingOutOfPenaltyBox) {
 				System.out.println("Answer was correct!!!!");

@@ -15,7 +15,7 @@ public class QuestionSelector {
         this.rockQuestions = rockQuestions;
     }
 
-    public String invoke(String category) {
+    public String questionFor(String category) {
         if (category == "Pop")
             return popQuestions.removeFirst().toString();
         if (category == "Science")

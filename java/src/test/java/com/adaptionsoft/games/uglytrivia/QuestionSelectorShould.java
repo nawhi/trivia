@@ -18,7 +18,7 @@ public class QuestionSelectorShould {
 //                null, null, null,
 //                new CategorySelector(),
 //        );
-//        String actualQuestion = selector.invoke();
+//        String actualQuestion = selector.questionFor();
 //        assertEquals(expectedQuestion, actualQuestion);
     }
 }
