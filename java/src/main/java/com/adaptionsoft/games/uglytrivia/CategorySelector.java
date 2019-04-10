@@ -2,18 +2,15 @@ package com.adaptionsoft.games.uglytrivia;
 
 public class CategorySelector {
     public String invoke(int place) {
-        if (place == 0) return "Pop";
-        if (place == 4) return "Pop";
-        if (place == 8) return "Pop";
-        if (place == 1) return "Science";
-        if (place == 5) return "Science";
-        if (place == 9) return "Science";
-        if (place == 2) return "Sports";
-        if (place == 6) return "Sports";
-        if (place == 10) return "Sports";
-        if (place == 3)  return "Rock";
-        if (place == 7)  return "Rock";
-        if (place == 11) return "Rock";
-        throw new IllegalArgumentException("place should be less than 12");
+        if (place > 11)
+            throw new IllegalArgumentException("place should be less than 12");
+
+        switch(place % 4)
+        {
+            case 0:  return "Pop";
+            case 1:  return "Science";
+            case 2:  return "Sports";
+            default: return "Rock";
+        }
     }
 }
