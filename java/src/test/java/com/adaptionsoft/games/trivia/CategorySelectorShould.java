@@ -30,4 +30,9 @@ public class CategorySelectorShould {
         assertEquals(expectedCategory, categorySelector.invoke(place));
     }
 
+    @Test(expected=IllegalArgumentException.class)
+    public void fails_if_place_greater_than_11() {
+        new CategorySelector().invoke(12);
+    }
+
 }
