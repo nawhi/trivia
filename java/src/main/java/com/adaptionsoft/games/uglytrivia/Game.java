@@ -79,9 +79,14 @@ public class Game {
 	}
 
 	private void askQuestion() {
-		QuestionSelector questionSelector = new QuestionSelector(this);
-		String question = questionSelector.invoke(categorySelector.categoryFor(places[currentPlayer]));
-		System.out.println(question);
+		if (categorySelector.categoryFor(places[currentPlayer]) == "Pop")
+			System.out.println(popQuestions.removeFirst());
+		if (categorySelector.categoryFor(places[currentPlayer]) == "Science")
+			System.out.println(scienceQuestions.removeFirst());
+		if (categorySelector.categoryFor(places[currentPlayer]) == "Sports")
+			System.out.println(sportsQuestions.removeFirst());
+		if (categorySelector.categoryFor(places[currentPlayer]) == "Rock")
+			System.out.println(rockQuestions.removeFirst());
 	}
 
 
