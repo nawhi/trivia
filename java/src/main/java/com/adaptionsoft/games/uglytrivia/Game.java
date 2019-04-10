@@ -83,7 +83,7 @@ public class Game {
 	}
 
 	private String selectQuestion(LinkedList popQuestions, LinkedList scienceQuestions, LinkedList sportsQuestions, LinkedList rockQuestions, CategorySelector categorySelector, int place) {
-		return new QuestionSelector(popQuestions, scienceQuestions, sportsQuestions, rockQuestions, categorySelector, place).invoke(categorySelector.categoryFor(place));
+		return new QuestionSelector(popQuestions, scienceQuestions, sportsQuestions, rockQuestions).invoke(categorySelector.categoryFor(place));
 	}
 
 

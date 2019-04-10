@@ -7,16 +7,12 @@ public class QuestionSelector {
     private LinkedList scienceQuestions;
     private LinkedList sportsQuestions;
     private LinkedList rockQuestions;
-    private CategorySelector categorySelector;
-    private int place;
 
-    public QuestionSelector(LinkedList popQuestions, LinkedList scienceQuestions, LinkedList sportsQuestions, LinkedList rockQuestions, CategorySelector categorySelector, int place) {
+    public QuestionSelector(LinkedList popQuestions, LinkedList scienceQuestions, LinkedList sportsQuestions, LinkedList rockQuestions) {
         this.popQuestions = popQuestions;
         this.scienceQuestions = scienceQuestions;
         this.sportsQuestions = sportsQuestions;
         this.rockQuestions = rockQuestions;
-        this.categorySelector = categorySelector;
-        this.place = place;
     }
 
     public String invoke(String category) {
