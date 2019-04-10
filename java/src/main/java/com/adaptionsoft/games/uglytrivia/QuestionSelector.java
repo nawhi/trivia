@@ -16,13 +16,13 @@ public class QuestionSelector {
     }
 
     public String questionFor(String category) {
-        if (category == "Pop")
+        if (category.equals("Pop"))
             return popQuestions.removeFirst().toString();
-        if (category == "Science")
+        if (category.equals("Science"))
             return scienceQuestions.removeFirst().toString();
-        if (category == "Sports")
+        if (category.equals("Sports"))
             return sportsQuestions.removeFirst().toString();
-        if (category == "Rock")
+        if (category.equals("Rock"))
             return rockQuestions.removeFirst().toString();
         throw new IllegalStateException();
     }
