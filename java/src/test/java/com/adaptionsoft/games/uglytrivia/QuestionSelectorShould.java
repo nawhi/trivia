@@ -21,7 +21,7 @@ public class QuestionSelectorShould {
     private QuestionSelector selector;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         popQuestions = new LinkedList(asList("pop question 1", "pop question 2"));
         scienceQuestions = new LinkedList(asList("science question 1", "science question 2"));
         sportsQuestions = new LinkedList(asList("sports question 1", "sports question 2"));

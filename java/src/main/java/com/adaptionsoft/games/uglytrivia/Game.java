@@ -79,6 +79,10 @@ public class Game {
 	}
 
 	private void askQuestion() {
+		/*
+		 * TODO: Need to finish moving out everything related to the 'questions' objects
+		 * TODO: into other classes which are unit-tested (e.g. QuestionSelector and QuestionBuilder)
+		 */
 		QuestionSelector questionSelector = new QuestionSelector(popQuestions, scienceQuestions, sportsQuestions, rockQuestions);
 		String category = categorySelector.categoryFor(places[currentPlayer]);
 		System.out.println(questionSelector.questionFor(category));
