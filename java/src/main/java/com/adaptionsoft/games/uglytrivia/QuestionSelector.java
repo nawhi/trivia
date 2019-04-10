@@ -7,14 +7,20 @@ public class QuestionSelector {
         this.game = game;
     }
 
-    public void invoke(String category) {
-        if (category == "Pop")
-            System.out.println(game.popQuestions.removeFirst());
-        if (category == "Science")
-            System.out.println(game.scienceQuestions.removeFirst());
-        if (category == "Sports")
-            System.out.println(game.sportsQuestions.removeFirst());
-        if (category == "Rock")
-            System.out.println(game.rockQuestions.removeFirst());
+    public String invoke(String category) {
+
+        if (category == "Pop") {
+            return game.popQuestions.removeFirst().toString();
+        }
+        if (category == "Science") {
+            return game.scienceQuestions.removeFirst().toString();
+        }
+        if (category == "Sports") {
+            return game.sportsQuestions.removeFirst().toString();
+        }
+        if (category == "Rock") {
+            return game.rockQuestions.removeFirst().toString();
+        }
+        throw new IllegalArgumentException();
     }
 }

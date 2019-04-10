@@ -79,7 +79,9 @@ public class Game {
 	}
 
 	private void askQuestion() {
-		new QuestionSelector(this).invoke(categorySelector.categoryFor(places[currentPlayer]));
+		QuestionSelector questionSelector = new QuestionSelector(this);
+		String question = questionSelector.invoke(categorySelector.categoryFor(places[currentPlayer]));
+		System.out.println(question);
 	}
 
 
