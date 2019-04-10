@@ -19,14 +19,14 @@ public class QuestionSelector {
         this.place = place;
     }
 
-    public String invoke() {
-        if (categorySelector.categoryFor(place) == "Pop")
+    public String invoke(String category) {
+        if (category == "Pop")
             return popQuestions.removeFirst().toString();
-        if (categorySelector.categoryFor(place) == "Science")
+        if (category == "Science")
             return scienceQuestions.removeFirst().toString();
-        if (categorySelector.categoryFor(place) == "Sports")
+        if (category == "Sports")
             return sportsQuestions.removeFirst().toString();
-        if (categorySelector.categoryFor(place) == "Rock")
+        if (category == "Rock")
             return rockQuestions.removeFirst().toString();
         throw new IllegalStateException();
     }
