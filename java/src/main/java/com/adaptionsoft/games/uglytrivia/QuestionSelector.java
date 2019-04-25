@@ -4,29 +4,35 @@ import java.util.LinkedList;
 
 public class QuestionSelector {
     private final QuestionDeck questionDeck;
-    private LinkedList scienceQuestions;
-    private LinkedList sportsQuestions;
-    private LinkedList rockQuestions;
+    private QuestionDeck scienceQuestions;
+    private QuestionDeck sportsQuestions;
+    private QuestionDeck rockQuestions;
 
     public QuestionSelector(LinkedList popQuestions, LinkedList scienceQuestions, LinkedList sportsQuestions, LinkedList rockQuestions) {
         questionDeck = new QuestionDeck("Pop");
         this.questionDeck.questions = popQuestions;
-        this.scienceQuestions = scienceQuestions;
-        this.sportsQuestions = sportsQuestions;
-        this.rockQuestions = rockQuestions;
+        this.scienceQuestions = new QuestionDeck("Science");
+        this.scienceQuestions.questions = scienceQuestions;
+
+        this.sportsQuestions = new QuestionDeck("Sports");
+        this.sportsQuestions.questions = sportsQuestions;
+
+        this.rockQuestions = new QuestionDeck("Rock");
+        this.rockQuestions.questions = rockQuestions;
+
     }
 
     public QuestionSelector() {
         questionDeck = new QuestionDeck("Pop");
-        scienceQuestions = new LinkedList();
-        sportsQuestions = new LinkedList();
-        rockQuestions = new LinkedList();
+        scienceQuestions = new QuestionDeck("Science");
+        sportsQuestions = new QuestionDeck("Sports");
+        rockQuestions = new QuestionDeck("Rock");
 
         for (int i = 0; i < 50; i++) {
             questionDeck.questions.addLast("Pop Question " + i);
-            scienceQuestions.addLast(("Science Question " + i));
-            sportsQuestions.addLast(("Sports Question " + i));
-            rockQuestions.addLast(createRockQuestion(i));
+            scienceQuestions.questions.addLast(("Science Question " + i));
+            sportsQuestions.questions.addLast(("Sports Question " + i));
+            rockQuestions.questions.addLast(createRockQuestion(i));
         }
     }
 
@@ -38,11 +44,11 @@ public class QuestionSelector {
         if (category.equals("Pop"))
             return questionDeck.questions.removeFirst().toString();
         if (category.equals("Science"))
-            return scienceQuestions.removeFirst().toString();
+            return scienceQuestions.questions.removeFirst().toString();
         if (category.equals("Sports"))
-            return sportsQuestions.removeFirst().toString();
+            return sportsQuestions.questions.removeFirst().toString();
         if (category.equals("Rock"))
-            return rockQuestions.removeFirst().toString();
+            return rockQuestions.questions.removeFirst().toString();
         throw new IllegalStateException();
     }
 }
