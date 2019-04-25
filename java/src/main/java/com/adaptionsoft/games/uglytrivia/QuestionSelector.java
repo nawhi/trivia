@@ -1,26 +1,10 @@
 package com.adaptionsoft.games.uglytrivia;
 
-import java.util.LinkedList;
-
 public class QuestionSelector {
     private final QuestionDeck popQuestions;
     private QuestionDeck scienceQuestions;
     private QuestionDeck sportsQuestions;
     private QuestionDeck rockQuestions;
-
-    public QuestionSelector(LinkedList popQuestions, LinkedList scienceQuestions, LinkedList sportsQuestions, LinkedList rockQuestions) {
-        this.popQuestions = new QuestionDeck("Pop");
-        this.popQuestions.questions = popQuestions;
-        this.scienceQuestions = new QuestionDeck("Science");
-        this.scienceQuestions.questions = scienceQuestions;
-
-        this.sportsQuestions = new QuestionDeck("Sports");
-        this.sportsQuestions.questions = sportsQuestions;
-
-        this.rockQuestions = new QuestionDeck("Rock");
-        this.rockQuestions.questions = rockQuestions;
-
-    }
 
     public QuestionSelector() {
         popQuestions = new QuestionDeck("Pop");
