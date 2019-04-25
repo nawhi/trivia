@@ -1,7 +1,6 @@
 package com.adaptionsoft.games.uglytrivia;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 
 public class Game {
 	private final CategorySelector categorySelector = new CategorySelector();
@@ -12,10 +11,11 @@ public class Game {
 
     int currentPlayer = 0;
     boolean isGettingOutOfPenaltyBox;
-	private final QuestionSelector questionSelector = new QuestionSelector();
+	private final QuestionSet questionSet;
 
 	public  Game(){
-    }
+		questionSet = new QuestionSet("Pop", "Science", "Sports", "Rock");
+	}
 
 	public boolean add(String playerName) {
 	    players.add(playerName);
@@ -65,12 +65,8 @@ public class Game {
 	}
 
 	private void askQuestion() {
-		/*
-		 * TODO: Need to finish moving out everything related to the 'questions' objects
-		 * TODO: into other classes which are unit-tested (e.g. QuestionSelector and QuestionBuilder)
-		 */
 		String category = categorySelector.categoryFor(places[currentPlayer]);
-		System.out.println(questionSelector.questionFor(category));
+		System.out.println(questionSet.questionFor(category));
 	}
 
 

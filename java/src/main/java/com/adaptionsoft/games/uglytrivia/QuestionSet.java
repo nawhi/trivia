@@ -21,7 +21,7 @@ public class QuestionSet {
         return questionDeck;
     }
 
-    public String nextForCategory(String category) {
+    public String questionFor(String category) {
         for (QuestionDeck questionDeck : questions) {
             if(questionDeck.isCategory(category))
                 return questionDeck.next();
