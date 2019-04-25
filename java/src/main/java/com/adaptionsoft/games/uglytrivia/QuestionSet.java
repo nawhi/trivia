@@ -1,16 +1,16 @@
 package com.adaptionsoft.games.uglytrivia;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class QuestionSet {
-    List<QuestionDeck> questions;
+    private List<QuestionDeck> questions;
 
     public QuestionSet(String... categories) {
-        questions = new ArrayList<>();
-        for (String category : categories) {
-            questions.add(createNewQuestionDeck(category));
-        }
+        questions = Arrays.stream(categories)
+                .map(this::createNewQuestionDeck)
+                .collect(Collectors.toList());
     }
 
     private QuestionDeck createNewQuestionDeck(String category) {
