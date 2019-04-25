@@ -3,6 +3,7 @@ package com.adaptionsoft.games.uglytrivia;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class QuestionSet {
     private List<QuestionDeck> questions;
@@ -15,17 +16,15 @@ public class QuestionSet {
 
     private QuestionDeck createNewQuestionDeck(String category) {
         QuestionDeck questionDeck = new QuestionDeck(category);
-        for (int i = 0; i < 50; i++) {
-           questionDeck.add();
-        }
+        IntStream.range(0, 50).forEach(i -> questionDeck.add());
         return questionDeck;
     }
 
     public String questionFor(String category) {
-        for (QuestionDeck questionDeck : questions) {
-            if(questionDeck.isCategory(category))
-                return questionDeck.next();
-        }
-        throw new IllegalArgumentException();
+        return questions.stream()
+                .filter(questionDeck -> questionDeck.isCategory(category))
+                .findFirst()
+                .orElseThrow(IllegalArgumentException::new)
+                .next();
     }
 }
