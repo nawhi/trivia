@@ -29,26 +29,22 @@ public class QuestionSelector {
         rockQuestions = new QuestionDeck("Rock");
 
         for (int i = 0; i < 50; i++) {
-            popQuestions.questions.addLast("Pop Question " + i);
-            scienceQuestions.questions.addLast(("Science Question " + i));
-            sportsQuestions.questions.addLast(("Sports Question " + i));
-            rockQuestions.questions.addLast(createRockQuestion(i));
+            popQuestions.add();
+            scienceQuestions.add();
+            sportsQuestions.add();
+            rockQuestions.add();
         }
-    }
-
-    private String createRockQuestion(int index){
-        return "Rock Question " + index;
     }
 
     public String questionFor(String category) {
         if (category.equals("Pop"))
-            return popQuestions.questions.removeFirst().toString();
+            return popQuestions.next();
         if (category.equals("Science"))
-            return scienceQuestions.questions.removeFirst().toString();
+            return scienceQuestions.next();
         if (category.equals("Sports"))
-            return sportsQuestions.questions.removeFirst().toString();
+            return sportsQuestions.next();
         if (category.equals("Rock"))
-            return rockQuestions.questions.removeFirst().toString();
+            return rockQuestions.next();
         throw new IllegalStateException();
     }
 }
