@@ -1,10 +1,13 @@
 package com.adaptionsoft.games.uglytrivia;
 
+import java.util.Set;
+
 public class QuestionSelector {
     private final QuestionDeck popQuestions;
-    private QuestionDeck scienceQuestions;
-    private QuestionDeck sportsQuestions;
-    private QuestionDeck rockQuestions;
+    private final QuestionDeck scienceQuestions;
+    private final QuestionDeck sportsQuestions;
+    private final QuestionDeck rockQuestions;
+    Set<QuestionDeck> questions;
 
     public QuestionSelector() {
         popQuestions = new QuestionDeck("Pop");
@@ -18,17 +21,14 @@ public class QuestionSelector {
             sportsQuestions.add();
             rockQuestions.add();
         }
+        questions = Set.of(popQuestions, scienceQuestions, sportsQuestions, rockQuestions);
     }
 
     public String questionFor(String category) {
-        if (category.equals("Pop"))
-            return popQuestions.next();
-        if (category.equals("Science"))
-            return scienceQuestions.next();
-        if (category.equals("Sports"))
-            return sportsQuestions.next();
-        if (category.equals("Rock"))
-            return rockQuestions.next();
+        for (QuestionDeck questionDeck : questions) {
+            if (questionDeck.isCategory(category))
+                return questionDeck.next();
+        }
         throw new IllegalStateException();
     }
 }

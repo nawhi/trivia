@@ -20,4 +20,8 @@ public class QuestionDeck {
     public void add() {
         questions.add(category + " Question " + questionIndex++);
     }
+
+    public boolean isCategory(String category) {
+        return this.category.equals(category);
+    }
 }
