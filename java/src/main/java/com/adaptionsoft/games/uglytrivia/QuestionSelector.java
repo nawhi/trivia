@@ -2,12 +2,15 @@ package com.adaptionsoft.games.uglytrivia;
 
 import java.util.Set;
 
+import static java.util.Arrays.asList;
+
 public class QuestionSelector {
+    final QuestionSet questionSet = new QuestionSet("Pop", "Science");
     private final QuestionDeck popQuestions;
     private final QuestionDeck scienceQuestions;
     private final QuestionDeck sportsQuestions;
     private final QuestionDeck rockQuestions;
-    Set<QuestionDeck> questions;
+
 
     public QuestionSelector() {
         popQuestions = new QuestionDeck("Pop");
@@ -21,11 +24,11 @@ public class QuestionSelector {
             sportsQuestions.add();
             rockQuestions.add();
         }
-        questions = Set.of(popQuestions, scienceQuestions, sportsQuestions, rockQuestions);
+        questionSet.questions = asList(popQuestions, scienceQuestions, sportsQuestions, rockQuestions);
     }
 
     public String questionFor(String category) {
-        for (QuestionDeck questionDeck : questions) {
+        for (QuestionDeck questionDeck : questionSet.questions) {
             if (questionDeck.isCategory(category))
                 return questionDeck.next();
         }
