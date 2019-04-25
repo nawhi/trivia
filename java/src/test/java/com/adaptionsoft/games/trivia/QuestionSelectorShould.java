@@ -1,5 +1,6 @@
-package com.adaptionsoft.games.uglytrivia;
+package com.adaptionsoft.games.trivia;
 
+import com.adaptionsoft.games.uglytrivia.QuestionSelector;
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
 import org.junit.Before;
