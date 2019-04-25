@@ -15,5 +15,6 @@ public class QuestionDeckShould  {
         questionDeck.add();
 
         assertEquals("Pop Question 0", questionDeck.next());
+        assertEquals("Pop Question 1", questionDeck.next());
     }
 }

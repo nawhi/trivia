@@ -18,6 +18,6 @@ public class QuestionDeck {
     }
 
     public void add() {
-        questions.add(category + " Question " + questionIndex);
+        questions.add(category + " Question " + questionIndex++);
     }
 }
