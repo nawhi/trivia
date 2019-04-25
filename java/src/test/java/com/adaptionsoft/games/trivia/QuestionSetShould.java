@@ -21,7 +21,7 @@ public class QuestionSetShould {
 
     @Test
     public void creates_50_questions_for_a_category() {
-        QuestionSet questionSet = new QuestionSet("Pop", "Science");
+        QuestionSet questionSet = new QuestionSet("Science", "Pop");
         for(int i = 0; i < 50; i++)
         {
             assertEquals("Pop Question " + i, questionSet.nextForCategory("Pop"));
