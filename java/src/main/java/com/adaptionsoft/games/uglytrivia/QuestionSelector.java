@@ -3,14 +3,14 @@ package com.adaptionsoft.games.uglytrivia;
 import java.util.LinkedList;
 
 public class QuestionSelector {
-    private final QuestionDeck questionDeck;
+    private final QuestionDeck popQuestions;
     private QuestionDeck scienceQuestions;
     private QuestionDeck sportsQuestions;
     private QuestionDeck rockQuestions;
 
     public QuestionSelector(LinkedList popQuestions, LinkedList scienceQuestions, LinkedList sportsQuestions, LinkedList rockQuestions) {
-        questionDeck = new QuestionDeck("Pop");
-        this.questionDeck.questions = popQuestions;
+        this.popQuestions = new QuestionDeck("Pop");
+        this.popQuestions.questions = popQuestions;
         this.scienceQuestions = new QuestionDeck("Science");
         this.scienceQuestions.questions = scienceQuestions;
 
@@ -23,13 +23,13 @@ public class QuestionSelector {
     }
 
     public QuestionSelector() {
-        questionDeck = new QuestionDeck("Pop");
+        popQuestions = new QuestionDeck("Pop");
         scienceQuestions = new QuestionDeck("Science");
         sportsQuestions = new QuestionDeck("Sports");
         rockQuestions = new QuestionDeck("Rock");
 
         for (int i = 0; i < 50; i++) {
-            questionDeck.questions.addLast("Pop Question " + i);
+            popQuestions.questions.addLast("Pop Question " + i);
             scienceQuestions.questions.addLast(("Science Question " + i));
             sportsQuestions.questions.addLast(("Sports Question " + i));
             rockQuestions.questions.addLast(createRockQuestion(i));
@@ -42,7 +42,7 @@ public class QuestionSelector {
 
     public String questionFor(String category) {
         if (category.equals("Pop"))
-            return questionDeck.questions.removeFirst().toString();
+            return popQuestions.questions.removeFirst().toString();
         if (category.equals("Science"))
             return scienceQuestions.questions.removeFirst().toString();
         if (category.equals("Sports"))
