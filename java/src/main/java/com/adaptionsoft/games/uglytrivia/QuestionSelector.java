@@ -15,6 +15,24 @@ public class QuestionSelector {
         this.rockQuestions = rockQuestions;
     }
 
+    public QuestionSelector() {
+        popQuestions = new LinkedList();
+        scienceQuestions = new LinkedList();
+        sportsQuestions = new LinkedList();
+        rockQuestions = new LinkedList();
+
+        for (int i = 0; i < 50; i++) {
+            popQuestions.addLast("Pop Question " + i);
+            scienceQuestions.addLast(("Science Question " + i));
+            sportsQuestions.addLast(("Sports Question " + i));
+            rockQuestions.addLast(createRockQuestion(i));
+        }
+    }
+
+    private String createRockQuestion(int index){
+        return "Rock Question " + index;
+    }
+
     public String questionFor(String category) {
         if (category.equals("Pop"))
             return popQuestions.removeFirst().toString();

@@ -9,27 +9,13 @@ public class Game {
     int[] places = new int[6];
     int[] purses  = new int[6];
     boolean[] inPenaltyBox  = new boolean[6];
-    
-    LinkedList popQuestions = new LinkedList();
-    LinkedList scienceQuestions = new LinkedList();
-    LinkedList sportsQuestions = new LinkedList();
-    LinkedList rockQuestions = new LinkedList();
-    
+
     int currentPlayer = 0;
     boolean isGettingOutOfPenaltyBox;
+	private final QuestionSelector questionSelector = new QuestionSelector();
 
 	public  Game(){
-    	for (int i = 0; i < 50; i++) {
-			popQuestions.addLast("Pop Question " + i);
-			scienceQuestions.addLast(("Science Question " + i));
-			sportsQuestions.addLast(("Sports Question " + i));
-			rockQuestions.addLast(createRockQuestion(i));
-    	}
     }
-
-	private String createRockQuestion(int index){
-		return "Rock Question " + index;
-	}
 
 	public boolean add(String playerName) {
 	    players.add(playerName);
@@ -83,7 +69,6 @@ public class Game {
 		 * TODO: Need to finish moving out everything related to the 'questions' objects
 		 * TODO: into other classes which are unit-tested (e.g. QuestionSelector and QuestionBuilder)
 		 */
-		QuestionSelector questionSelector = new QuestionSelector(popQuestions, scienceQuestions, sportsQuestions, rockQuestions);
 		String category = categorySelector.categoryFor(places[currentPlayer]);
 		System.out.println(questionSelector.questionFor(category));
 	}
