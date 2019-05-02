@@ -20,12 +20,13 @@ public class Game {
 
 	public boolean add(String playerName) {
 	    players.add(playerName);
-		places[players.size()] = 0;
-		purses[players.size()] = 0;
-		inPenaltyBox[players.size()] = false;
+	    playersAggregate.add(new Player(playerName));
+		places[playersAggregate.numberOfPlayers()] = 0;
+		purses[playersAggregate.numberOfPlayers()] = 0;
+		inPenaltyBox[playersAggregate.numberOfPlayers()] = false;
 	    
 	    System.out.println(playerName + " was added");
-	    System.out.println("They are player number " + players.size());
+	    System.out.println("They are player number " + playersAggregate.numberOfPlayers());
 		return true;
 	}
 
@@ -83,12 +84,12 @@ public class Game {
 				
 				boolean winner = didPlayerWin();
 				currentPlayer++;
-				if (currentPlayer == players.size()) currentPlayer = 0;
+				if (currentPlayer == playersAggregate.numberOfPlayers()) currentPlayer = 0;
 				
 				return winner;
 			} else {
 				currentPlayer++;
-				if (currentPlayer == players.size()) currentPlayer = 0;
+				if (currentPlayer == playersAggregate.numberOfPlayers()) currentPlayer = 0;
 				return true;
 			}
 			
@@ -105,7 +106,7 @@ public class Game {
 			
 			boolean winner = didPlayerWin();
 			currentPlayer++;
-			if (currentPlayer == players.size()) currentPlayer = 0;
+			if (currentPlayer == playersAggregate.numberOfPlayers()) currentPlayer = 0;
 			
 			return winner;
 		}
@@ -117,7 +118,7 @@ public class Game {
 		inPenaltyBox[currentPlayer] = true;
 		
 		currentPlayer++;
-		if (currentPlayer == players.size()) currentPlayer = 0;
+		if (currentPlayer == playersAggregate.numberOfPlayers()) currentPlayer = 0;
 		return true;
 	}
 
