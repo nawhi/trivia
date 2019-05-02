@@ -1,7 +1,5 @@
 package com.adaptionsoft.games.uglytrivia;
 
-import com.adaptionsoft.games.trivia.Player;
-
 import java.util.ArrayList;
 import java.util.List;
 
