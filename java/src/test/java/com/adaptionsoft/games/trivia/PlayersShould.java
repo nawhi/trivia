@@ -22,8 +22,9 @@ public class PlayersShould {
         Players players = new Players();
 
         players.add(new Player("some other player"));
-        players.add(new Player("player 1"));
+        String expectedPlayerName = "player 1";
+        players.add(new Player(expectedPlayerName));
 
-        assertEquals(players.getByIndex(1), new Player("player 1"));
+        assertEquals(players.getNameByIndex(1), expectedPlayerName);
     }
 }

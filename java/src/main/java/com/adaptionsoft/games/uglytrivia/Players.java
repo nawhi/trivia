@@ -18,7 +18,7 @@ public class Players {
         listOfPlayers.add(player);
     }
 
-    public Player getByIndex(int index) {
-        return listOfPlayers.get(index);
+    public String getNameByIndex(int index) {
+        return listOfPlayers.get(index).getName();
     }
 }
