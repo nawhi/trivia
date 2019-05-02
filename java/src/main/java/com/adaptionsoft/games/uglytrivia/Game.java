@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class Game {
 	private final CategorySelector categorySelector = new CategorySelector();
 	ArrayList players = new ArrayList();
+	Players playersAggregate = new Players();
     int[] places = new int[6];
     int[] purses  = new int[6];
     boolean[] inPenaltyBox  = new boolean[6];
