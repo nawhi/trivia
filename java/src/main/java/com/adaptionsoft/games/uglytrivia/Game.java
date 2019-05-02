@@ -5,7 +5,6 @@ import java.util.ArrayList;
 public class Game {
 	private final CategorySelector categorySelector = new CategorySelector();
 	ArrayList players = new ArrayList();
-	ArrayList<Player> playerAggregate = new ArrayList<Player>();
     int[] places = new int[6];
     int[] purses  = new int[6];
     boolean[] inPenaltyBox  = new boolean[6];
@@ -20,13 +19,12 @@ public class Game {
 
 	public boolean add(String playerName) {
 	    players.add(playerName);
-	    playerAggregate.add(new Player(playerName));
 		places[players.size()] = 0;
 		purses[players.size()] = 0;
 		inPenaltyBox[players.size()] = false;
 	    
 	    System.out.println(playerName + " was added");
-	    System.out.println("They are player number " + playerAggregate.size());
+	    System.out.println("They are player number " + players.size());
 		return true;
 	}
 
