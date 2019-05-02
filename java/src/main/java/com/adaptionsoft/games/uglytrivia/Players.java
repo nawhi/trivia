@@ -19,4 +19,8 @@ public class Players {
     public void add(Player player) {
         listOfPlayers.add(player);
     }
+
+    public Player getByIndex(int index) {
+        return listOfPlayers.get(index);
+    }
 }
