@@ -11,10 +11,10 @@ public class Game {
 
     int currentPlayer = 0;
     boolean isGettingOutOfPenaltyBox;
-	private final QuestionSet questionSet;
+	private final QuestionPool questionPool;
 
 	public  Game(){
-		questionSet = new QuestionSet("Pop", "Science", "Sports", "Rock");
+		questionPool = new QuestionPool("Pop", "Science", "Sports", "Rock");
 	}
 
 	public boolean add(String playerName) {
@@ -66,7 +66,7 @@ public class Game {
 
 	private void askQuestion() {
 		String category = categorySelector.categoryFor(places[currentPlayer]);
-		System.out.println(questionSet.questionFor(category));
+		System.out.println(questionPool.questionFor(category));
 	}
 
 
