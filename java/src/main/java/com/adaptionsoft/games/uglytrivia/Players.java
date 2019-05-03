@@ -5,9 +5,11 @@ import java.util.List;
 
 public class Players {
     private List<Player> listOfPlayers;
+    private int currentPlayerIndex;
 
     public Players() {
         listOfPlayers = new ArrayList<>();
+        currentPlayerIndex = 0;
     }
 
     public int numberOfPlayers() {
@@ -20,5 +22,13 @@ public class Players {
 
     public String getNameByIndex(int index) {
         return listOfPlayers.get(index).getName();
+    }
+
+    public Player getCurrent() {
+        return listOfPlayers.get(currentPlayerIndex);
+    }
+
+    public void next() {
+        currentPlayerIndex++;
     }
 }

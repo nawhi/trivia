@@ -4,27 +4,45 @@ import com.adaptionsoft.games.uglytrivia.Player;
 import com.adaptionsoft.games.uglytrivia.Players;
 import org.junit.Test;
 
+import java.awt.*;
+import java.util.Arrays;
+
 import static org.junit.Assert.*;
 
 public class PlayersShould {
 
     @Test
     public void add_a_new_player() {
-        Players players = new Players();
-
-        players.add(new Player("Player 1"));
-
+        Players players = playersInstanceWith(new Player("player 1"));
         assertEquals(1, players.numberOfPlayers());
     }
 
     @Test
     public void get_a_player_by_index() {
-        Players players = new Players();
+        String expectedPlayerName = "target player";
+        final Player player1 = new Player("some other player");
+        final Player expectedPlayer = new Player(expectedPlayerName);
+        Players players = playersInstanceWith(player1, expectedPlayer);
 
-        players.add(new Player("some other player"));
-        String expectedPlayerName = "player 1";
-        players.add(new Player(expectedPlayerName));
+        assertEquals(expectedPlayerName, players.getNameByIndex(1));
+    }
 
-        assertEquals(players.getNameByIndex(1), expectedPlayerName);
+    @Test
+    public void get_next_player() {
+        Player player1 = new Player("Player1");
+        Player player2 = new Player("Player2");
+        Players players = playersInstanceWith(player1, player2);
+
+        players.next();
+
+        assertEquals(new Player("Player2"), players.getCurrent());
+    }
+
+    private static Players playersInstanceWith(Player... players) {
+        Players playersInstance = new Players();
+
+        Arrays.stream(players).forEach(playersInstance::add);
+
+        return playersInstance;
     }
 }
