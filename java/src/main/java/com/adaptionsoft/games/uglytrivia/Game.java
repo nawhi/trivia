@@ -16,12 +16,13 @@ public class Game {
 
 	public boolean add(String playerName) {
 	    players.add(new Player(playerName));
-		places[players.numberOfPlayers()] = 0;
-		purses[players.numberOfPlayers()] = 0;
-		inPenaltyBox[players.numberOfPlayers()] = false;
+		int numberOfPlayers = players.numberOfPlayers();
+		places[numberOfPlayers] = 0;
+		purses[numberOfPlayers] = 0;
+		inPenaltyBox[numberOfPlayers] = false;
 	    
 	    System.out.println(playerName + " was added");
-	    System.out.println("They are player number " + players.numberOfPlayers());
+	    System.out.println("They are player number " + numberOfPlayers);
 		return true;
 	}
 
