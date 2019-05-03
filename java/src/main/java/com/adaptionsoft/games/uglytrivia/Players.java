@@ -12,6 +12,10 @@ public class Players {
         currentPlayerIndex = 0;
     }
 
+    public int getCurrentPlayerIndex() {
+        return currentPlayerIndex;
+    }
+
     public int numberOfPlayers() {
         return listOfPlayers.size();
     }
