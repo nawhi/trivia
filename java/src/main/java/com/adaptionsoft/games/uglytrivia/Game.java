@@ -81,11 +81,16 @@ public class Game {
 				boolean winner = didPlayerWin();
 				currentPlayer++;
 				if (currentPlayer == players.numberOfPlayers()) currentPlayer = 0;
+
+				players.next();
 				
 				return winner;
 			} else {
 				currentPlayer++;
 				if (currentPlayer == players.numberOfPlayers()) currentPlayer = 0;
+
+				players.next();
+
 				return true;
 			}
 			
@@ -103,7 +108,9 @@ public class Game {
 			boolean winner = didPlayerWin();
 			currentPlayer++;
 			if (currentPlayer == players.numberOfPlayers()) currentPlayer = 0;
-			
+
+			players.next();
+
 			return winner;
 		}
 	}
@@ -115,6 +122,8 @@ public class Game {
 		
 		currentPlayer++;
 		if (currentPlayer == players.numberOfPlayers()) currentPlayer = 0;
+
+		players.next();
 		return true;
 	}
 
