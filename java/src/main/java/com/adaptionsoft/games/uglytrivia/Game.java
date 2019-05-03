@@ -26,36 +26,38 @@ public class Game {
 	}
 
 	public void roll(int roll) {
-		System.out.println(players.getNameByIndex(players.getCurrentPlayerIndex()) + " is the current player");
+		int currentPlayerIndex = players.getCurrentPlayerIndex();
+		String currentPlayerName = players.getNameByIndex(currentPlayerIndex);
+		System.out.println(currentPlayerName + " is the current player");
 		System.out.println("They have rolled a " + roll);
 		
-		if (inPenaltyBox[players.getCurrentPlayerIndex()]) {
+		if (inPenaltyBox[currentPlayerIndex]) {
 			if (roll % 2 != 0) {
 				isGettingOutOfPenaltyBox = true;
 				
-				System.out.println(players.getNameByIndex(players.getCurrentPlayerIndex()) + " is getting out of the penalty box");
-				places[players.getCurrentPlayerIndex()] = places[players.getCurrentPlayerIndex()] + roll;
-				if (places[players.getCurrentPlayerIndex()] > 11) places[players.getCurrentPlayerIndex()] = places[players.getCurrentPlayerIndex()] - 12;
+				System.out.println(currentPlayerName + " is getting out of the penalty box");
+				places[currentPlayerIndex] = places[currentPlayerIndex] + roll;
+				if (places[currentPlayerIndex] > 11) places[currentPlayerIndex] = places[currentPlayerIndex] - 12;
 				
-				System.out.println(players.getNameByIndex(players.getCurrentPlayerIndex())
+				System.out.println(currentPlayerName
 						+ "'s new location is " 
-						+ places[players.getCurrentPlayerIndex()]);
-				System.out.println("The category is " + categorySelector.categoryFor(places[players.getCurrentPlayerIndex()]));
+						+ places[currentPlayerIndex]);
+				System.out.println("The category is " + categorySelector.categoryFor(places[currentPlayerIndex]));
 				askQuestion();
 			} else {
-				System.out.println(players.getNameByIndex(players.getCurrentPlayerIndex()) + " is not getting out of the penalty box");
+				System.out.println(currentPlayerName + " is not getting out of the penalty box");
 				isGettingOutOfPenaltyBox = false;
 				}
 			
 		} else {
 		
-			places[players.getCurrentPlayerIndex()] = places[players.getCurrentPlayerIndex()] + roll;
-			if (places[players.getCurrentPlayerIndex()] > 11) places[players.getCurrentPlayerIndex()] = places[players.getCurrentPlayerIndex()] - 12;
+			places[currentPlayerIndex] = places[currentPlayerIndex] + roll;
+			if (places[currentPlayerIndex] > 11) places[currentPlayerIndex] = places[currentPlayerIndex] - 12;
 			
-			System.out.println(players.getNameByIndex(players.getCurrentPlayerIndex())
+			System.out.println(currentPlayerName
 					+ "'s new location is " 
-					+ places[players.getCurrentPlayerIndex()]);
-			System.out.println("The category is " + categorySelector.categoryFor(places[players.getCurrentPlayerIndex()]));
+					+ places[currentPlayerIndex]);
+			System.out.println("The category is " + categorySelector.categoryFor(places[currentPlayerIndex]));
 			askQuestion();
 		}
 		
@@ -68,13 +70,14 @@ public class Game {
 
 
     public boolean wasCorrectlyAnswered() {
-		if (inPenaltyBox[players.getCurrentPlayerIndex()]){
+		int currentPlayerIndex = players.getCurrentPlayerIndex();
+		if (inPenaltyBox[currentPlayerIndex]){
 			if (isGettingOutOfPenaltyBox) {
 				System.out.println("Answer was correct!!!!");
-				purses[players.getCurrentPlayerIndex()]++;
-				System.out.println(players.getNameByIndex(players.getCurrentPlayerIndex())
+				purses[currentPlayerIndex]++;
+				System.out.println(players.getNameByIndex(currentPlayerIndex)
 						+ " now has "
-						+ purses[players.getCurrentPlayerIndex()]
+						+ purses[currentPlayerIndex]
 						+ " Gold Coins.");
 				
 				boolean winner = didPlayerWin();
@@ -93,10 +96,10 @@ public class Game {
 		} else {
 		
 			System.out.println("Answer was corrent!!!!");
-			purses[players.getCurrentPlayerIndex()]++;
-			System.out.println(players.getNameByIndex(players.getCurrentPlayerIndex())
+			purses[currentPlayerIndex]++;
+			System.out.println(players.getNameByIndex(currentPlayerIndex)
 					+ " now has "
-					+ purses[players.getCurrentPlayerIndex()]
+					+ purses[currentPlayerIndex]
 					+ " Gold Coins.");
 			
 			boolean winner = didPlayerWin();
