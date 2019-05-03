@@ -75,12 +75,8 @@ public class Game {
 		if (inPenaltyBox[currentPlayerIndex]){
 			if (isGettingOutOfPenaltyBox) {
 				System.out.println("Answer was correct!!!!");
-				purses[currentPlayerIndex]++;
-				System.out.println(players.getNameByIndex(currentPlayerIndex)
-						+ " now has "
-						+ purses[currentPlayerIndex]
-						+ " Gold Coins.");
-				
+				incrementPurse(currentPlayerIndex);
+
 				boolean winner = didPlayerWin();
 
 				players.next();
@@ -97,12 +93,8 @@ public class Game {
 		} else {
 		
 			System.out.println("Answer was corrent!!!!");
-			purses[currentPlayerIndex]++;
-			System.out.println(players.getNameByIndex(currentPlayerIndex)
-					+ " now has "
-					+ purses[currentPlayerIndex]
-					+ " Gold Coins.");
-			
+			incrementPurse(currentPlayerIndex);
+
 			boolean winner = didPlayerWin();
 
 			players.next();
@@ -110,7 +102,15 @@ public class Game {
 			return winner;
 		}
 	}
-	
+
+	private void incrementPurse(int currentPlayerIndex) {
+		purses[currentPlayerIndex]++;
+		System.out.println(players.getNameByIndex(currentPlayerIndex)
+				+ " now has "
+				+ purses[currentPlayerIndex]
+				+ " Gold Coins.");
+	}
+
 	public boolean wrongAnswer(){
 		System.out.println("Question was incorrectly answered");
 		System.out.println(players.getNameByIndex(players.getCurrentPlayerIndex())+ " was sent to the penalty box");
