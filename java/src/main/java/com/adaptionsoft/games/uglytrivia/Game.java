@@ -7,8 +7,7 @@ public class Game {
     int[] purses  = new int[6];
     boolean[] inPenaltyBox  = new boolean[6];
 
-    int currentPlayer = 0;
-    boolean isGettingOutOfPenaltyBox;
+	boolean isGettingOutOfPenaltyBox;
 	private final QuestionPool questionPool;
 
 	public  Game(){
@@ -79,16 +78,11 @@ public class Game {
 						+ " Gold Coins.");
 				
 				boolean winner = didPlayerWin();
-				currentPlayer++;
-				if (currentPlayer == players.numberOfPlayers()) currentPlayer = 0;
 
 				players.next();
 				
 				return winner;
 			} else {
-				currentPlayer++;
-				if (currentPlayer == players.numberOfPlayers()) currentPlayer = 0;
-
 				players.next();
 
 				return true;
@@ -106,8 +100,6 @@ public class Game {
 					+ " Gold Coins.");
 			
 			boolean winner = didPlayerWin();
-			currentPlayer++;
-			if (currentPlayer == players.numberOfPlayers()) currentPlayer = 0;
 
 			players.next();
 
@@ -119,9 +111,6 @@ public class Game {
 		System.out.println("Question was incorrectly answered");
 		System.out.println(players.getNameByIndex(players.getCurrentPlayerIndex())+ " was sent to the penalty box");
 		inPenaltyBox[players.getCurrentPlayerIndex()] = true;
-		
-		currentPlayer++;
-		if (currentPlayer == players.numberOfPlayers()) currentPlayer = 0;
 
 		players.next();
 		return true;
