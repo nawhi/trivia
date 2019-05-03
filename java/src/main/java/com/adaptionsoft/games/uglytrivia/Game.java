@@ -4,8 +4,7 @@ public class Game {
 	private final CategorySelector categorySelector = new CategorySelector();
 	Players players = new Players();
     int[] places = new int[6];
-    int[] purses  = new int[6];
-    boolean[] inPenaltyBox  = new boolean[6];
+	boolean[] inPenaltyBox  = new boolean[6];
 
 	boolean isGettingOutOfPenaltyBox;
 	private final QuestionPool questionPool;
@@ -18,7 +17,6 @@ public class Game {
 	    players.add(new Player(playerName));
 		int numberOfPlayers = players.numberOfPlayers();
 		places[numberOfPlayers] = 0;
-		purses[numberOfPlayers] = 0;
 		inPenaltyBox[numberOfPlayers] = false;
 	    
 	    System.out.println(playerName + " was added");
@@ -75,7 +73,7 @@ public class Game {
 		if (inPenaltyBox[currentPlayerIndex]){
 			if (isGettingOutOfPenaltyBox) {
 				System.out.println("Answer was correct!!!!");
-				incrementPurse(currentPlayerIndex);
+				incrementPurse();
 
 				boolean winner = didPlayerWin();
 
@@ -91,7 +89,7 @@ public class Game {
 		} else {
 		
 			System.out.println("Answer was corrent!!!!");
-			incrementPurse(currentPlayerIndex);
+			incrementPurse();
 
 			boolean winner = didPlayerWin();
 
@@ -101,11 +99,13 @@ public class Game {
 		}
 	}
 
-	private void incrementPurse(int currentPlayerIndex) {
-		purses[currentPlayerIndex]++;
-		System.out.println(players.getNameByIndex(currentPlayerIndex)
+	private void incrementPurse() {
+		Player currentPlayer = players.getCurrent();
+		currentPlayer.incrementPurse();
+
+		System.out.println(currentPlayer.getName()
 				+ " now has "
-				+ purses[currentPlayerIndex]
+				+ currentPlayer.getPurse()
 				+ " Gold Coins.");
 	}
 
@@ -120,7 +120,7 @@ public class Game {
 
 
 	private boolean didPlayerWin() {
-		return !(purses[players.getCurrentPlayerIndex()] == 6);
+		return (players.getCurrent().getPurse() != 6);
 	}
 
 }
