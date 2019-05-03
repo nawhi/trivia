@@ -30,5 +30,7 @@ public class Players {
 
     public void next() {
         currentPlayerIndex++;
+        if (currentPlayerIndex >= listOfPlayers.size())
+            currentPlayerIndex = 0;
     }
 }
