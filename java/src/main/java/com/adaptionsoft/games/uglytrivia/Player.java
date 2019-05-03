@@ -4,6 +4,7 @@ import java.util.Objects;
 
 public class Player {
     private String name;
+    private int purse;
 
     public String getName() {
         return name;
@@ -11,6 +12,14 @@ public class Player {
 
     public Player(String name) {
         this.name = name;
+    }
+
+    public void incrementPurse() {
+        purse++;
+    }
+
+    public int getPurse() {
+        return purse;
     }
 
     @Override

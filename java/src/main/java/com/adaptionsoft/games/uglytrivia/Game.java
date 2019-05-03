@@ -87,9 +87,7 @@ public class Game {
 
 				return true;
 			}
-			
-			
-			
+
 		} else {
 		
 			System.out.println("Answer was corrent!!!!");
