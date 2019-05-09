@@ -11,13 +11,11 @@ public class BoardShould {
 
     private Player chet;
     private Player faker;
-    private Player sue;
 
     @Before
     public void setUp() throws Exception {
         chet = new Player("chet");
         faker = new Player("faker");
-        sue = new Player("sue");
     }
 
     @Test
