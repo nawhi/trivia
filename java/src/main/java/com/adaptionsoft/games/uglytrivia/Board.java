@@ -6,6 +6,13 @@ public class Board {
     public Board() {
     }
 
+    public Board(Player... players) {
+    }
+
+    void initialisePlayerAt(int playerIndex) {
+        places[playerIndex] = 0;
+    }
+
     void movePlayer(int roll, int currentPlayerIndex) {
         places[currentPlayerIndex] = places[currentPlayerIndex] + roll;
         if (places[currentPlayerIndex] > 11)
@@ -14,9 +21,5 @@ public class Board {
 
     int getPlayerPlace(int currentPlayerIndex) {
         return places[currentPlayerIndex];
-    }
-
-    void initialisePlayerAt(int playerIndex) {
-        places[playerIndex] = 0;
     }
 }
