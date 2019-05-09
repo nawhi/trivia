@@ -1,9 +1,9 @@
 package com.adaptionsoft.games.uglytrivia;
 
 public class Game {
+	final Board board = new Board();
 	private final CategorySelector categorySelector = new CategorySelector();
 	Players players = new Players();
-    int[] places = new int[6];
 	boolean[] inPenaltyBox  = new boolean[6];
 
 	boolean isGettingOutOfPenaltyBox;
@@ -16,7 +16,7 @@ public class Game {
 	public boolean add(String playerName) {
 	    players.add(new Player(playerName));
 		int numberOfPlayers = players.numberOfPlayers();
-		places[numberOfPlayers] = 0;
+		board.initialisePlayerAt(numberOfPlayers);
 		inPenaltyBox[numberOfPlayers] = false;
 	    
 	    System.out.println(playerName + " was added");
@@ -35,13 +35,12 @@ public class Game {
 				isGettingOutOfPenaltyBox = true;
 				
 				System.out.println(currentPlayerName + " is getting out of the penalty box");
-				places[currentPlayerIndex] = places[currentPlayerIndex] + roll;
-				if (places[currentPlayerIndex] > 11) places[currentPlayerIndex] = places[currentPlayerIndex] - 12;
-				
+				board.movePlayer(roll, currentPlayerIndex);
+
 				System.out.println(currentPlayerName
 						+ "'s new location is " 
-						+ places[currentPlayerIndex]);
-				System.out.println("The category is " + categorySelector.categoryFor(places[currentPlayerIndex]));
+						+ board.getPlayerPlace(currentPlayerIndex));
+				System.out.println("The category is " + categorySelector.categoryFor(board.getPlayerPlace(currentPlayerIndex)));
 				askQuestion();
 			} else {
 				System.out.println(currentPlayerName + " is not getting out of the penalty box");
@@ -49,21 +48,20 @@ public class Game {
 				}
 			
 		} else {
-		
-			places[currentPlayerIndex] = places[currentPlayerIndex] + roll;
-			if (places[currentPlayerIndex] > 11) places[currentPlayerIndex] = places[currentPlayerIndex] - 12;
-			
+
+			board.movePlayer(roll, currentPlayerIndex);
+
 			System.out.println(currentPlayerName
 					+ "'s new location is " 
-					+ places[currentPlayerIndex]);
-			System.out.println("The category is " + categorySelector.categoryFor(places[currentPlayerIndex]));
+					+ board.getPlayerPlace(currentPlayerIndex));
+			System.out.println("The category is " + categorySelector.categoryFor(board.getPlayerPlace(currentPlayerIndex)));
 			askQuestion();
 		}
 		
 	}
 
 	private void askQuestion() {
-		String category = categorySelector.categoryFor(places[players.getCurrentPlayerIndex()]);
+		String category = categorySelector.categoryFor(board.getPlayerPlace(players.getCurrentPlayerIndex()));
 		System.out.println(questionPool.questionFor(category));
 	}
 
