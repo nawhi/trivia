@@ -27,7 +27,9 @@ public class Board {
     }
 
     void movePlayer(Player player, int roll) {
-        playerPlaces.put(player, roll);
+        int currentPlace = playerPlaces.get(player);
+        int newPlace = (currentPlace + roll) % 12;
+        playerPlaces.put(player, newPlace);
     }
 
     int getPlayerPlace(int playerId) {

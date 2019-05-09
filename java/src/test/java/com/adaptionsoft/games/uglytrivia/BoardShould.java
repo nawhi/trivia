@@ -33,7 +33,18 @@ public class BoardShould {
         Board board = new Board(chet, faker);
 
         board.movePlayer(chet, 1);
+        board.movePlayer(chet, 1);
 
-        assertEquals(1, board.getPlayerPlace(chet));
+        assertEquals(2, board.getPlayerPlace(chet));
+    }
+
+    @Test
+    public void have_a_size_of_twelve_and_wrap() {
+        Board board = new Board(chet);
+
+        board.movePlayer(chet, 6);
+        board.movePlayer(chet, 6);
+
+        assertEquals(0, board.getPlayerPlace(chet));
     }
 }
