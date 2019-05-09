@@ -43,12 +43,12 @@ public class Game {
 				isGettingOutOfPenaltyBox = true;
 				
 				System.out.println(currentPlayerName + " is getting out of the penalty box");
-				movePlayer(roll, currentPlayerIndex);
+				movePlayer(roll);
 
 				System.out.println(currentPlayerName
 						+ "'s new location is " 
-						+ getPlayerPlace(currentPlayerIndex));
-				System.out.println("The category is " + categorySelector.categoryFor(getPlayerPlace(currentPlayerIndex)));
+						+ getPlayerPlace());
+				System.out.println("The category is " + categorySelector.categoryFor(getPlayerPlace()));
 				askQuestion();
 			} else {
 				System.out.println(currentPlayerName + " is not getting out of the penalty box");
@@ -57,28 +57,27 @@ public class Game {
 			
 		} else {
 
-			movePlayer(roll, currentPlayerIndex);
+			movePlayer(roll);
 
 			System.out.println(currentPlayerName
 					+ "'s new location is " 
-					+ getPlayerPlace(currentPlayerIndex));
-			System.out.println("The category is " + categorySelector.categoryFor(getPlayerPlace(currentPlayerIndex)));
+					+ getPlayerPlace());
+			System.out.println("The category is " + categorySelector.categoryFor(getPlayerPlace()));
 			askQuestion();
 		}
 		
 	}
 
-	private int getPlayerPlace(int currentPlayerIndex) {
-
-		return board.getPlayerPlace(currentPlayerIndex);
+	private int getPlayerPlace() {
+		return newBoard.getPlayerPlace(players.getCurrent());
 	}
 
-	private void movePlayer(int roll, int currentPlayerIndex) {
-		board.movePlayer(roll, currentPlayerIndex);
+	private void movePlayer(int roll) {
+		newBoard.movePlayer(players.getCurrent(), roll);
 	}
 
 	private void askQuestion() {
-		String category = categorySelector.categoryFor(getPlayerPlace(players.getCurrentPlayerIndex()));
+		String category = categorySelector.categoryFor(getPlayerPlace());
 		System.out.println(questionPool.questionFor(category));
 	}
 
