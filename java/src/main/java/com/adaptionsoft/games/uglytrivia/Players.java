@@ -32,6 +32,10 @@ public class Players {
         return listOfPlayers.get(currentPlayerIndex);
     }
 
+    public Player[] asArray() {
+        return listOfPlayers.toArray(new Player[0]);
+    }
+
     public void next() {
         currentPlayerIndex++;
         if (currentPlayerIndex >= listOfPlayers.size())

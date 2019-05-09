@@ -8,6 +8,8 @@ public class Game {
 
 	boolean isGettingOutOfPenaltyBox;
 	private final QuestionPool questionPool;
+	private Board newBoard;
+	private boolean started = false;
 
 	public  Game(){
 		questionPool = new QuestionPool("Pop", "Science", "Sports", "Rock");
@@ -24,7 +26,13 @@ public class Game {
 		return true;
 	}
 
+	private void start() {
+		newBoard = new Board(players.asArray());
+		started = true;
+	}
+
 	public void roll(int roll) {
+		if (!started) start();
 		int currentPlayerIndex = players.getCurrentPlayerIndex();
 		String currentPlayerName = players.getNameByIndex(currentPlayerIndex);
 		System.out.println(currentPlayerName + " is the current player");
