@@ -1,7 +1,11 @@
 package com.adaptionsoft.games.uglytrivia;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Board {
     int[] places = new int[6];
+    private Map<Player, Integer> newPlaces = new HashMap<>();
 
     public Board() {
     }
@@ -19,7 +23,15 @@ public class Board {
             places[playerId] = places[playerId] - 12;
     }
 
+    void movePlayer(Player player, int roll) {
+        newPlaces.put(player, roll);
+    }
+
     int getPlayerPlace(int playerId) {
         return places[playerId];
+    }
+
+    int getPlayerPlace(Player player) {
+        return newPlaces.get(player);
     }
 }

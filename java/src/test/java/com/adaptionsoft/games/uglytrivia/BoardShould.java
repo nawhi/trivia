@@ -16,5 +16,14 @@ public class BoardShould {
                 assertEquals(0, board.getPlayerPlace(i)));
     }
 
+    @Test
+    public void move_a_player_by_the_roll_amount() {
+        Player chet = new Player("chet");
+        Player faker = new Player("faker");
+        Board board = new Board(chet, faker);
 
+        board.movePlayer(chet, 1);
+
+        assertEquals(1, board.getPlayerPlace(chet));
+    }
 }
