@@ -1,14 +1,13 @@
 package com.adaptionsoft.games.uglytrivia;
 
 public class Game {
-	final Board board = new Board();
 	private final CategorySelector categorySelector = new CategorySelector();
-	Players players = new Players();
+	private Players players = new Players();
+	private Board board;
 	boolean[] inPenaltyBox  = new boolean[6];
 
 	boolean isGettingOutOfPenaltyBox;
 	private final QuestionPool questionPool;
-	private Board newBoard;
 	private boolean started = false;
 
 	public  Game(){
@@ -18,7 +17,6 @@ public class Game {
 	public boolean add(String playerName) {
 	    players.add(new Player(playerName));
 		int numberOfPlayers = players.numberOfPlayers();
-		board.initialisePlayerAt(numberOfPlayers);
 		inPenaltyBox[numberOfPlayers] = false;
 	    
 	    System.out.println(playerName + " was added");
@@ -27,7 +25,7 @@ public class Game {
 	}
 
 	private void start() {
-		newBoard = new Board(players.asArray());
+		board = new Board(players.asArray());
 		started = true;
 	}
 
@@ -69,11 +67,11 @@ public class Game {
 	}
 
 	private int getPlayerPlace() {
-		return newBoard.getPlayerPlace(players.getCurrent());
+		return board.getPlayerPlace(players.getCurrent());
 	}
 
 	private void movePlayer(int roll) {
-		newBoard.movePlayer(players.getCurrent(), roll);
+		board.movePlayer(players.getCurrent(), roll);
 	}
 
 	private void askQuestion() {
